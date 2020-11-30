@@ -4,7 +4,7 @@ import com.kodilla.testing.calculator.Calculator;
 import com.kodilla.testing.user.SimpleUser;
 
 public class TestingMain {
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         //System.out.println("Moduł 6. Wprowadzenie do testowania oprogramowania");
         SimpleUser simpleuser = new SimpleUser("theForumUser");
 
@@ -37,6 +37,6 @@ public class TestingMain {
         } else {
             System.out.println("Error");
         }
-    }
+    } */
 }
 
