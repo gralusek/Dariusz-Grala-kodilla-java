@@ -47,9 +47,10 @@ public class ShapeCollectorTestSuite {
             Shape shape = new Circle("Circle", 4.0);
             //When
             shapeCollector.addFigure(shape);
-            boolean result = shapeCollector.removeFigure(shape);
+            shapeCollector.removeFigure(shape);
+            int result = shapeCollector.getShapeCollectorQuantity();
             //Then
-            Assertions.assertFalse(result);
+            Assertions.assertEquals(0, result);
         }
 
         @Test
