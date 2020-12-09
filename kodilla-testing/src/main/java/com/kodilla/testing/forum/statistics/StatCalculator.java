@@ -14,9 +14,20 @@ public class StatCalculator {
         postsNumber = statistics.postsCount();
         commentsNumber = statistics.commentsCount();
 
-        userAveragePosts =  (double)postsNumber / (double)usersNumber;
-        userAverageComments = (double)commentsNumber / (double)usersNumber;
-        averageCommentsInPost = (double)commentsNumber / (double)postsNumber;
+        if (usersNumber == 0) {
+            userAveragePosts = 0;
+            userAverageComments = 0;
+        } else {
+            userAveragePosts =  (double)postsNumber / (double)usersNumber;
+            userAverageComments = (double)commentsNumber / (double)usersNumber;
+        }
+
+        if (postsNumber == 0) {
+            averageCommentsInPost = 0;
+        } else {
+            averageCommentsInPost = (double)commentsNumber / (double)postsNumber;
+        }
+
     }
 
     public int getUsersNumber() {
