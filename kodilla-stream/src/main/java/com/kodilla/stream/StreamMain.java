@@ -12,7 +12,9 @@ import com.kodilla.stream.lambda.SaySomething;
 import com.kodilla.stream.reference.FunctionalCalculator;
 import com.kodilla.stream.person.People;
 
-import java.sql.SQLOutput;
+
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -75,14 +77,19 @@ public class StreamMain {
         System.out.println(theResultStringOfBooks);*/
         Forum forum = new Forum();
 
+        int year = Calendar.getInstance().get(Calendar.YEAR);
+
         Map<Integer, ForumUser> theResultMapOfUsers = forum.getUserList().stream()
                 .filter(forumUser -> forumUser.getSex() == 'M')
-                .filter(forumUser -> forumUser.getDateOfBirth().getYear() > 2000)
+                .filter(forumUser -> year - forumUser.getDateOfBirth().getYear()  > 20)
                 .filter(forumUser -> forumUser.getPostsNumber() > 0)
                 .collect(Collectors.toMap(ForumUser::getUserID, forumUser -> forumUser));
         System.out.println("#users: " + theResultMapOfUsers.size());
         theResultMapOfUsers.entrySet().stream()
                 .map(entry -> entry.getKey() + ": " + entry.getValue())
                 .forEach(System.out::println);
+
+        System.out.println(year);
             }
+
 }
