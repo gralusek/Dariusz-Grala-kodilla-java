@@ -7,12 +7,19 @@ public class GlutenFreeShop implements Vendor {
     }
 
     @Override
-    public void process(Order order) {
+    public boolean process(Order order) {
 
-        System.out.println("Order has been completed");
-        System.out.println("You bought " + order.getProduct().getName() + " for "
-        + order.getProduct().getPrice());
-        System.out.println("Thank you for your order");
-        System.out.println(name());
+        boolean newOrder = true;
+
+        if (newOrder) {
+
+            System.out.println("Order has been completed");
+            System.out.println("Thank you for your order");
+            System.out.println(name());
+            return true;
+        } else {
+            System.out.println("We are sorry, some error occured. Ply try again");
+            return false;
+        }
     }
 }

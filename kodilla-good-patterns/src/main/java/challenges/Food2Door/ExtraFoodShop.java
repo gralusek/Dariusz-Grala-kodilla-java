@@ -7,12 +7,18 @@ public class ExtraFoodShop implements Vendor {
     }
 
     @Override
-    public void process(Order order) {
+    public boolean process(Order order) {
 
-        System.out.println("Thank you for your order in " + name() + "!");
-        System.out.println("Your ordered product: " + order.getProduct().getName() + ". Order number: "
-        + order.getOrderNumber());
-        System.out.println("Cost of order = " + order.getProduct().getPrice());
+        boolean newOrder = true;
 
+        if (newOrder) {
+
+            System.out.println("Thank you for your order in " + name() + "!");
+            System.out.println("Order number: " + order.getOrderNumber());
+            return true;
+        } else {
+            System.out.println("Order failed. Ply try again");
+            return false;
+        }
     }
 }

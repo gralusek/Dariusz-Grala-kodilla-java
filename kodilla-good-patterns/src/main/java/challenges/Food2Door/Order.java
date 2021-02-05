@@ -1,28 +1,23 @@
 package challenges.Food2Door;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class Order {
 
-    private Product product;
+    private List<Product> products;
     private int orderNumber;
-    private Vendor vendor;
 
-    public Order(Product product, int orderNumber, Vendor vendor) {
-        this.product = product;
+    public Order(List<Product> products, int orderNumber) {
+        this.products = products;
         this.orderNumber = orderNumber;
-        this.vendor = vendor;
     }
 
-    public Product getProduct() {
-        return product;
+    public List<Product> getProducts() {
+        return products;
     }
 
     public int getOrderNumber() {
         return orderNumber;
-    }
-
-    public Vendor getVendor() {
-        return vendor;
     }
 }

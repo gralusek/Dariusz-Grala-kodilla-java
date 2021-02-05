@@ -4,5 +4,5 @@ public interface Vendor {
 
     public String name();
 
-    public void process(Order order);
+    public boolean process(Order order);
 }

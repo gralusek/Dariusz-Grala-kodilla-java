@@ -7,12 +7,19 @@ public class HealthyShop implements Vendor {
     }
 
     @Override
-    public void process(Order order) {
+    public boolean process(Order order) {
 
-        System.out.println("Hello customer! This is " + name() + "!");
-        System.out.println("You have just bought " + order.getProduct().getName() + " for "
-        + order.getProduct().getPrice());
-        System.out.println("(Order number: " + order.getOrderNumber() + ")");
-        System.out.println("Thank you and stay healthy :)");
+        boolean newOrder = true;
+
+        if (newOrder) {
+
+            System.out.println("Hello customer! This is " + name() + "!");
+            System.out.println("(Order number: " + order.getOrderNumber() + ")");
+            System.out.println("Thank you and stay healthy :)");
+            return true;
+        } else {
+            System.out.println("Dear customer, we have trouble with processing your order. Please try again");
+            return false;
+        }
     }
 }
