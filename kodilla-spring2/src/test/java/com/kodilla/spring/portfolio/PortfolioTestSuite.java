@@ -25,6 +25,7 @@ public class PortfolioTestSuite {
         assertEquals("Task to do", board.toDoList.getTasks().get(0));
         assertEquals("In Progress Task", board.inProgressList.getTasks().get(0));
         assertEquals("Done task", board.getDoneList().getTasks().get(0));
+        System.out.println(board);
 
     }
 }

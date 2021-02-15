@@ -9,4 +9,6 @@ findProject(':kodilla-good-patterns:kodilla-spring-intro')?.name = 'kodilla-spri
 include 'kodilla-spring-intro'
 include 'kodilla-spring2'
 include 'kodilla-spring-web'
+include 'kodilla-patterns'
+include 'kodilla-patterns'
 
