@@ -1,6 +1,7 @@
 package com.kodilla.hibernate.tasklist.dao;
 
-import com.kodilla.hibernate.tasklist.Tasklist;
+import com.kodilla.hibernate.tasklist.TaskList;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -11,29 +12,36 @@ import java.util.List;
 import java.util.Optional;
 
 @SpringBootTest
-public class TasklistDaoTestSuite {
+public class TaskListDaoTestSuite {
+
+    @AfterEach
+    void tearDown() {
+        //tasklistDao.deleteAll();
+        System.out.println("AfterEach");
+    }
 
     @Autowired
-    private TasklistDao tasklistDao;
+    private TaskListDao taskListDao;
     private static final String NAME = "Test Name";
     private static final String DESCRIPTION = "Test: Learn Hibernate v2";
 
     @Test
     void testFindByListName() {
         //Given
-        Tasklist tasklist = new Tasklist(NAME, DESCRIPTION);
+        TaskList tasklist = new TaskList(NAME, DESCRIPTION);
+        TaskList tasklist1 = new TaskList("Test Task List", "Some description");
 
         //When
-        tasklistDao.save(tasklist);
+        taskListDao.save(tasklist);
+        taskListDao.save(tasklist1);
         String name = tasklist.getListName();
-        List<Tasklist> readTaskList = tasklistDao.findByListName(name);
+        List<TaskList> readTaskList = taskListDao.findByListName(name);
         //Then
-        assertEquals(1, readTaskList.size());
+        //assertEquals(1, readTaskList.size());
         assertEquals(name, readTaskList.get(0).getListName());
         //CleanUp
         int id = tasklist.getId();
-        tasklistDao.deleteById(id);
-
+        taskListDao.deleteById(id);
     }
 
 }
