@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.math.BigDecimal;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -17,11 +18,15 @@ public class InvoiceDaoTestSuite {
 
     @Autowired
     private InvoiceDao invoiceDao;
+    @Autowired
+    private ItemDao itemDao;
+    @Autowired
+    private ProductDao productDao;
     @Test
     void testInvoiceDaoSave() {
         //Given
 
-        invoiceDao.deleteAll();
+        //invoiceDao.deleteAll();
         Invoice invoice = new Invoice("1/2021");
         Item item1 = new Item(new BigDecimal(50), 10, new BigDecimal(505));
         Item item2 = new Item(new BigDecimal(100), 8, new BigDecimal(800));
@@ -48,13 +53,16 @@ public class InvoiceDaoTestSuite {
         //When
         invoiceDao.save(invoice);
         int size = invoice.getItems().size();
-        int id = invoice.getId();
+        Long id = invoice.getId();
+        System.out.println(id);
+        Optional<Invoice> invoice1 = invoiceDao.findById(id);
+        String product1Name = invoice1.get().getItems().get(0).getProduct().getName();
         //Then
+        assertEquals(product1Name, "Helmet");
         assertEquals(3, size);
+        System.out.println(invoice);
 
         //Cleanup
-        invoiceDao.deleteById(id);
-
-
+        //invoiceDao.deleteById(id);
     }
 }

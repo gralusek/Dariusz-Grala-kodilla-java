@@ -11,7 +11,7 @@ import java.util.List;
 @Table(name = "INVOICES")
 public class Invoice {
 
-    private int id;
+    private Long id;
     private String number;
     private List<Item> items = new ArrayList<>();
 
@@ -26,7 +26,7 @@ public class Invoice {
     @GeneratedValue
     @NotNull
     @Column(name = "INVOICE_ID", unique = true)
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
@@ -41,13 +41,13 @@ public class Invoice {
             targetEntity = Item.class,
             mappedBy = "invoice",
             cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY
+            fetch = FetchType.EAGER
     )
     public List<Item> getItems() {
         return items;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
