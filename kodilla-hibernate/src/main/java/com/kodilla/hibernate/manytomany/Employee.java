@@ -10,6 +10,10 @@ import java.util.List;
         name = "Employee.retrieveEmployeeWithLastname",
         query = "FROM Employee WHERE lastname = :LASTNAME"
 )
+@NamedQuery(
+        name = "Employee.searchByPartOfName",
+        query = "FROM Employee WHERE firstname LIKE '%PartOfName%'"
+)
 @Entity
 @Table(name = "employee")
 public class Employee {
