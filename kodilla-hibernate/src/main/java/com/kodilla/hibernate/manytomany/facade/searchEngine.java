@@ -29,7 +29,9 @@ public class searchEngine {
             LOGGER.error(serachEngineException.ERR_COMPANY_NOT_FOUND);
             throw new serachEngineException(serachEngineException.ERR_COMPANY_NOT_FOUND);
         }
+        System.out.println("search engine size: " + companies.size() );
         return companies;
+
     }
 
     public List<Employee> searchEmployees(String partOfName) throws serachEngineException {
