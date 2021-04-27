@@ -26,8 +26,6 @@ class searchEngineTestSuite {
     @Test
     void searchForCompanies() throws serachEngineException {
 
-        companyDao.deleteAll();
-
         Employee johnSmith = new Employee("John", "Smith");
         Employee stephanieClarckson = new Employee("Stephanie", "Clarckson");
         Employee lindaKovalsky = new Employee("Linda", "Kovalsky");
@@ -47,16 +45,22 @@ class searchEngineTestSuite {
         stephanieClarckson.getCompanies().add(dataMaesters);
         lindaKovalsky.getCompanies().add(dataMaesters);
         lindaKovalsky.getCompanies().add(greyMatter);
+
         //When
         companyDao.save(softwareMachine);
         companyDao.save(dataMaesters);
         companyDao.save(greyMatter);
 
+        //Then
         try {
             List<Company> companies = searchEngine.searchCompanies("%soft%");
             System.out.println("size from test: " + companies.size());
+            assertEquals(1, companies.size());
         } catch (serachEngineException e) {
 
         }
+
+        //CleanUP
+        companyDao.deleteAll();
     }
 }
